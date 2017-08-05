@@ -1,0 +1,33 @@
+.App {
+  flex-direction: column;
+  min-height: 800px;
+}
+
+.App * {
+  display: flex;
+}
+
+.App-header {
+  background-color: rgb(101,132,159);
+  padding: 5px 20px;
+  color: white;
+}
+
+.roll-row {
+  padding: 10px;
+  align-items: center;
+  /*border: 1px solid yellow;*/
+}
+
+.roll-button {
+  margin: 10px;
+  width: 80px;
+  height: 64px;
+  background-color: rgb(72,70,85);
+  align-items: center;
+  justify-content: center;
+}
+
+.roll-button p {
+  color: white;
+}

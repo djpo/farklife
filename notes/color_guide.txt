@@ -1,0 +1,28 @@
+colors taken from http://imgur.com/a/J8nHZ
+
+red
+rgb(209,73,37)
+
+cream
+rgb(221,206,174)
+
+teal
+rgb(84,125,128)
+
+dull blue
+rgb(101,132,159)
+
+bolder blue
+rgb(68,113,153)
+
+midnight blue
+rgb(18,20,32)
+
+cerulean
+rgb(145,172,159)
+
+purplish gray
+rgb(72,70,85)
+
+pea green
+rgb(85,109,73)
