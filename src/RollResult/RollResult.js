@@ -5,7 +5,7 @@ function renderDice(roll) {
   let diceJsx = [];
   for (let i = 0; i < roll.length; i++) {
     diceJsx.push(
-      <div key={i} className="die">
+      <div key={i} className="roll-die">
         <p>{roll[i]}</p>
       </div>
     );
@@ -13,7 +13,7 @@ function renderDice(roll) {
   return diceJsx;
 }
 
-const RollResult = props =>  (
+const RollResult = props => (
   <div className="roll-result">
     {renderDice(props.roll)}
   </div>

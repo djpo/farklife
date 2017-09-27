@@ -1,33 +1,53 @@
-.App {
+#app {
+  display: flex;
   flex-direction: column;
-  min-height: 800px;
+  align-items: center;
 }
-
-.App * {
+#app * {
   display: flex;
 }
 
-.App-header {
+
+#app-header {
+  align-self: stretch;
   background-color: rgb(101,132,159);
   padding: 5px 20px;
   color: white;
 }
 
-.roll-row {
-  padding: 10px;
-  align-items: center;
-  /*border: 1px solid yellow;*/
+
+#app-content {
+  flex-direction: column;
 }
 
-.roll-button {
-  margin: 10px;
+
+.roll-row {
+  margin-top: 10px;
+  align-items: center;
+}
+
+
+.active-button {
+  margin-right: 10px;
   width: 80px;
-  height: 64px;
+  height: 60px;
   background-color: rgb(72,70,85);
+  border: 2px solid white;
   align-items: center;
   justify-content: center;
 }
-
-.roll-button p {
+.disabled-button {
+  margin-right: 10px;
+  width: 80px;
+  height: 60px;
+  background-color: rgb(72,70,85);
+  border: 2px solid rgb(190,190,190);
+  align-items: center;
+  justify-content: center;
+}
+.active-button p {
   color: white;
+}
+.disabled-button p {
+  color: rgb(190,190,190);
 }

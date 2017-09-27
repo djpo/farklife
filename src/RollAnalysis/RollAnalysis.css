@@ -1,46 +1,64 @@
-.analysis-box {
-  background-color: white;
-  border: 4px solid rgb(101,132,159);
-  padding: 5px 20px;
-  flex-direction: column;
-}
-
-.at-body {
-  border: 2px solid rgb(101,132,159);
-  padding: 3px;
-  flex-direction: column;
-}
-
-.at-row {}
-
-.at-label-row p {
-  color: rgb(209,73,37);
-  font-weight: 300;
-  font-size: 15px;
-}
-
-.at-sum-row p {
-  color: rgb(209,73,37);
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.at-cell {
-  flex: 1;
-  margin: 2px;
-  border: 1px solid rgb(72,70,85);
+.analysis-section {
+  margin-top: 10px;
+  width: 324px;
+  align-self: flex-end;
+  background-color: rgb(101,132,159);
   padding: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.die-row {
+  justify-content: center;
+  align-items: center;
+}
+
+
+.label-die {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(18,20,32);
+  border: 1px solid rgb(190,190,190);
+  align-items: center;
   justify-content: center;
 }
-
-.at-cell-placeholder {
-  flex: 1;
-  margin: 3px;
-  padding: 5px;
-  justify-content: center;
+.label-die > p {
+  font-size: 20px;
+  color: rgb(190,190,190);
 }
 
-.at-cell p {
-  margin: 0;
-  text-align: center;
+
+.die-row > p {
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: rgb(72,70,85);
+}
+#die-count {
+  margin-left: 30px;
+  margin-right: 20px;
+  color: white;
+}
+#die-points {
+  margin-left: 10px;
+  margin-right: 20px;
+  width: 40px;
+  color: rgb(18,20,32);
+}
+#die-total {
+  margin-left: 10px;
+  width: 40px;
+  color: rgb(18,20,32);
+}
+
+
+#saved-label {
+  width: 120px;
+}
+#saved-total {
+  width: 40px;
+  font-size: 22px;
+  color: white;
 }

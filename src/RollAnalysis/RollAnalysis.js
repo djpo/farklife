@@ -25,7 +25,8 @@ function count(roll, valueToCount) {
 function processRoll(roll) {
   let rollTotalPoints = 0;
 
-  const analysisMatrix = [1, 2, 3, 4, 5, 6].map((v) => {
+  // const analysisMatrix = [1, 2, 3, 4, 5, 6].map((v) => {
+  const analysisMatrix = [1, 5].map((v) => {
     const thisCount = count(roll, v);
     const thisPointWorth = valueTable[v];
     const thisTotalPoints = thisCount * thisPointWorth;
