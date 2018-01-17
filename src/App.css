@@ -21,6 +21,25 @@
 }
 
 
+#game-section {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 64px;
+}
+#new-game-button {
+  background-color: red;
+}
+#game-scores {
+  flex: 1;
+  flex-direction: column;
+  background-color: rgb(145,172,159);
+  justify-content: space-around;
+}
+.game-stats-row {
+  margin: 0 20px;
+}
+
+
 .roll-row {
   margin-top: 10px;
   align-items: center;

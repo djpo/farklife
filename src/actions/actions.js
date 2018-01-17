@@ -1,3 +1,7 @@
+export const startNewGame = () => {
+  return { type: 'START_NEW_GAME' };
+};
+
 export const newRoll = (oldRollLength) => {
   const numberOfDiceToRoll = (oldRollLength === 0) ? 6 : oldRollLength;
 
