@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './RollAnalysis.css';
 
 function renderTable(analysisResult) {
@@ -29,6 +30,21 @@ function renderTable(analysisResult) {
   );
 }
 
+const propTypes = {
+  analysisResult: PropTypes.shape({
+    analysisMatrix: PropTypes.arrayOf(
+      PropTypes.shape({
+        dieValue: PropTypes.number.isRequired,
+        count: PropTypes.number.isRequired,
+        pointsPerDie: PropTypes.number.isRequired,
+        totalForValue: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+    rollTotalPoints: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
 const RollAnalysisPres = props => renderTable(props.analysisResult);
 
+RollAnalysisPres.propTypes = propTypes;
 export default RollAnalysisPres;

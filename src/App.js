@@ -10,9 +10,9 @@ import SavedDice from './SavedDice/SavedDice';
 import './App.css';
 
 const mapStateToProps = state => ({
+  allowed: state.allowed,
   roll: state.roll,
   saved: state.saved,
-  allowed: state.allowed,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -25,13 +25,19 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const propTypes = {
-  roll: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  allowed: PropTypes.shape({
+    roll: PropTypes.bool.isRequired,
+    save: PropTypes.bool.isRequired,
+  }).isRequired,
+  roll: PropTypes.arrayOf(PropTypes.number).isRequired,
+  saved: PropTypes.arrayOf(PropTypes.number).isRequired,
   clickRoll: PropTypes.func.isRequired,
+  clickSave: PropTypes.func.isRequired,
 };
 
 const App = (props) => {
-  const clickSave = () => props.clickSave(props.roll, props.saved);
   const clickRoll = () => props.clickRoll(props.roll.length);
+  const clickSave = () => props.clickSave(props.roll, props.saved);
 
   return (
     <div id="app">

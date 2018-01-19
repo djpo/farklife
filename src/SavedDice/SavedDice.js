@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SavedDice.css';
 
 function renderDice(saved) {
@@ -13,10 +14,15 @@ function renderDice(saved) {
   return diceJsx;
 }
 
+const propTypes = {
+  saved: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
 const SavedDice = props => (
   <div className="saved-dice">
     {renderDice(props.saved)}
   </div>
 );
 
+SavedDice.propTypes = propTypes;
 export default SavedDice;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import RollAnalysisPres from './RollAnalysisPres';
 
 const valueTable = {
@@ -47,8 +48,13 @@ function processRoll(roll) {
   };
 }
 
+const propTypes = {
+  roll: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
 const RollAnalysis = props => (
   <RollAnalysisPres analysisResult={processRoll(props.roll)} />
 );
 
+RollAnalysis.propTypes = propTypes;
 export default RollAnalysis;
