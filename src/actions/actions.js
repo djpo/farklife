@@ -19,21 +19,53 @@ export const newRoll = (oldRollLength) => {
 };
 
 export const extractAndSave = (oldRoll, oldSaved) => {
-  let newToSave = [];
-  for (let i = 0; i < oldRoll.length; i++) {
-    if (oldRoll[i] === 1 || oldRoll[i] === 5) {
-      newToSave.push(oldRoll[i]);
-    }
-  }
+  // collect new 1s and 5s
+  const newToSave = oldRoll.filter(x => x === 1 || x === 5);
 
+  // add new 1s and 5s to saved
+  const savedUpdated = [...oldSaved, ...newToSave];
+
+  // remove 1s and 5s from roll
   const rollUpdated = oldRoll.filter(x => x !== 1 && x !== 5);
 
-  const savedUpdated = [...oldSaved, ...newToSave];
+  // process turnAnalysis; add (visible) saved dice to turnRunningScore
+  function processRoll(roll) {
+    function count(roll, valueToCount) {
+      let runningTotal = 0;
+      roll.forEach(die => {
+        if (die === valueToCount) {runningTotal++;}
+      });
+      return runningTotal;
+    }
+    const valueTable = { 1: 100, 5: 50 };
+    let turnRunningScoreVisible = 0;
+
+    const turnAnalysis = [1, 5].map((v) => {
+      const thisCount = count(roll, v);
+      const thisPointWorth = valueTable[v];
+      const thisTotalPoints = thisCount * thisPointWorth;
+
+      turnRunningScoreVisible += thisTotalPoints;
+
+      return {
+        dieValue: v,
+        count: thisCount,
+        pointsPerDie: valueTable[v],
+        totalForValue: thisCount * thisPointWorth,
+      };
+    });
+
+    return { turnAnalysis, turnRunningScoreVisible };
+  }
+
+  const { turnAnalysis, turnRunningScoreVisible } = processRoll(savedUpdated);
 
   return {
     type: 'EXTRACT_AND_SAVE',
     roll: rollUpdated,
     saved: savedUpdated,
+    turnAnalysis,
+    turnRunningScoreVisible,
   }
 };
 

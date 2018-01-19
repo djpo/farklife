@@ -5,7 +5,8 @@ const appReducer = (state = initialState, action) => {
 
     case 'START_NEW_GAME':
       return { ...state,
-        gameScores: [ 0, 0 ],
+        gameScores: [0, 0],
+        turnPlayer: 1,
         roll: [],
         saved: [],
         allowed: {
@@ -16,29 +17,33 @@ const appReducer = (state = initialState, action) => {
       };
 
     case 'NEW_ROLL':
+      // hot dice, new full roll of 6 dice
       if (state.roll.length === 0) {
         return { ...state,
-          gameScores: [ 100, 200 ], // dummy values
+          turnAnalysis: initialState.turnAnalysis, // empty visible analysis
           roll: action.roll,
           saved: [],
           allowed: { ...state.allowed,
             roll: false,
             save: true,
+            end: false,
           },
         };
       }
+      // continued roll, less than 6 dice
       return { ...state,
-        gameScores: [ 300, 400 ], // dummy values
         roll: action.roll,
         allowed: { ...state.allowed,
           roll: false,
           save: true,
+          end: false,
         },
       };
 
     case 'EXTRACT_AND_SAVE':
       return { ...state,
-        gameScores: [ 500, 600 ], // dummy values
+        turnRunningScore: state.turnRunningScore + action.turnRunningScoreVisible,
+        turnAnalysis: action.turnAnalysis,
         roll: action.roll,
         saved: action.saved,
         allowed: { ...state.allowed,
