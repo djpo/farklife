@@ -11,6 +11,7 @@ const appReducer = (state = initialState, action) => {
         allowed: {
           roll: true,
           save: false,
+          end: false,
         },
       };
 
@@ -43,6 +44,15 @@ const appReducer = (state = initialState, action) => {
         allowed: { ...state.allowed,
           roll: true,
           save: false,
+          end: true,
+        },
+      };
+
+    case 'END_TURN':
+      return { ...state,
+        turnPlayer: (state.turnPlayer === 1) ? 2 : 1,
+        allowed: { ...state.allowed,
+          end: false,
         },
       };
 

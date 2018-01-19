@@ -36,3 +36,5 @@ export const extractAndSave = (oldRoll, oldSaved) => {
     saved: savedUpdated,
   }
 };
+
+export const endTurn = () => ({ type: 'END_TURN' });

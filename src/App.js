@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
+  endTurn,
   extractAndSave,
   newRoll,
   startNewGame,
@@ -14,6 +15,7 @@ import './App.css';
 const mapStateToProps = state => ({
   allowed: state.allowed,
   gameScores: state.gameScores,
+  turnPlayer: state.turnPlayer,
   roll: state.roll,
   saved: state.saved,
 });
@@ -28,25 +30,32 @@ const mapDispatchToProps = dispatch => ({
   clickSave: (roll, saved) => {
     dispatch(extractAndSave(roll, saved));
   },
+  clickEnd: () => {
+    dispatch(endTurn());
+  },
 });
 
 const propTypes = {
   allowed: PropTypes.shape({
     roll: PropTypes.bool.isRequired,
     save: PropTypes.bool.isRequired,
+    end: PropTypes.bool.isRequired,
   }).isRequired,
   gameScores: PropTypes.arrayOf(PropTypes.number).isRequired,
+  turnPlayer: PropTypes.number.isRequired,
   roll: PropTypes.arrayOf(PropTypes.number).isRequired,
   saved: PropTypes.arrayOf(PropTypes.number).isRequired,
   clickNewGame: PropTypes.func.isRequired,
   clickRoll: PropTypes.func.isRequired,
   clickSave: PropTypes.func.isRequired,
+  clickEnd: PropTypes.func.isRequired,
 };
 
 const App = (props) => {
   const clickNewGame = () => props.clickNewGame();
   const clickRoll = () => props.clickRoll(props.roll.length);
   const clickSave = () => props.clickSave(props.roll, props.saved);
+  const clickEnd = () => props.clickEnd();
 
   return (
     <div id="app">
@@ -72,6 +81,10 @@ const App = (props) => {
           </div>
         </div>
 
+        <div>
+          <p>player up: {props.turnPlayer}</p>
+        </div>
+
         <div className="roll-row">
           <div
             className={props.allowed.roll ? "active-button" : "disabled-button"}
@@ -92,7 +105,15 @@ const App = (props) => {
           <SavedDice saved={props.saved} />
         </div>
 
-        <RollAnalysis roll={props.saved} />
+        <div className="roll-row">
+          <div
+            className={props.allowed.end ? "active-button" : "disabled-button"}
+            onClick={props.allowed.end ? clickEnd : null}
+          >
+            <p>end</p>
+          </div>
+          <RollAnalysis roll={props.saved} />
+        </div>
 
       </div>
 
